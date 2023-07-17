@@ -2,9 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const todosRouter = require('./routes/todo');
+require('dotenv').config();
+const connectionStr = process.env.MONGODB_URL;
 
 const app = express();
-const port = 5000;
+const port = 5001;
 
 // Middleware
 app.use(cors());
@@ -14,7 +16,7 @@ app.use(express.json());
 app.use('/api/todos', todosRouter);
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://abdul:Kaosarat95@cluster0.cwh7nbp.mongodb.net/', {
+mongoose.connect(connectionStr, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
