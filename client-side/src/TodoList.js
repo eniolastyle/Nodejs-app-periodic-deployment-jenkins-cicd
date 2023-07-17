@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import baseURL from './api';
+import './TodoList.css';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -74,24 +75,31 @@ const TodoList = () => {
   };  
 
   return (
-    <div>
+    <div className="App">
       <h1>Todo List</h1>
-      <input
-        type="text"
-        value={editId === '' ? text : editText}
-        onChange={(e) => (editId === '' ? setText(e.target.value) : setEditText(e.target.value))}
-        placeholder="Enter a todo"
-      />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <ul>
-      {todos.map((todo) => (
-        <li key={todo._id}>
-          {todo.text}
-          <button onClick={() => handleDeleteTodo(todo._id)}>Delete</button>
-          <button onClick={() => handleEditTodo(todo._id, todo.text)}>Edit</button>
-        </li>
-      ))}
-
+      <div className="todo-input">
+        <input
+          type="text"
+          value={editId === '' ? text : editText}
+          onChange={(e) => (editId === '' ? setText(e.target.value) : setEditText(e.target.value))}
+          placeholder="Enter a todo"
+        />
+        <button onClick={handleAddTodo}>{editId === '' ? 'Add Todo' : 'Update Todo'}</button>
+      </div>
+      <ul className="todo-list">
+        {todos.map((todo) => (
+          <li key={todo._id}>
+            {todo.text}
+            <div>
+              <button className="edit-button" onClick={() => handleEditTodo(todo._id, todo.text)}>
+                Edit
+              </button>
+              <button className="delete-button" onClick={() => handleDeleteTodo(todo._id)}>
+                Delete
+              </button>
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );
