@@ -91,7 +91,7 @@ describe('Todo API', () => {
 
       // Check if the todo is updated in the database
       const updatedTodo = await Todo.findById(todoId);
-      expect(updatedTodo.text).to.equal('Updated Todo');
+      expect(updatedTodo.text).tequal('Updated Todo');
     });
   });
 
