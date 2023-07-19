@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const todosRouter = require('./routes/todo');
 require('dotenv').config();
-const connectionStr = 'mongodb+srv://yusufolatuji53:LEi65TxnW3yLTprz@memories.wtf14jp.mongodb.net/test';
-
+//const connectionStr = 'mongodb+srv://yusufolatuji53:LEi65TxnW3yLTprz@memories.wtf14jp.mongodb.net/test';
+const connectionStr = 'mongodb+srv://goadmin:2JUjHAIk1ON46itZ@godatabase.pi7lxgz.mongodb.net/'
 const app = express();
 const port = 5000;
 
@@ -31,3 +31,5 @@ mongoose.connect(connectionStr, {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+module.exports = app
