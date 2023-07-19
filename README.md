@@ -50,5 +50,3 @@ This project was inspired by the need for automating Node.js application deploym
 For any inquiries or questions, please contact [Eniola](https://github.com/eniolastyle).
 
 ---
-
-Feel free to customize the content based on your specific project and add any additional sections or information that you find relevant.
