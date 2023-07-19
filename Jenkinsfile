@@ -15,7 +15,7 @@ pipeline {
         
         stage("Checkout from SCM"){
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/eniolastyle/Nodejs-app-periodic-deployment-jenkins-cicd'
+                git branch: 'enitest', credentialsId: 'github', url: 'https://github.com/eniolastyle/Nodejs-app-periodic-deployment-jenkins-cicd'
             }
         }
 
@@ -32,7 +32,12 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo "Test App..."
+                script {
+                    sh '''
+                        echo "Running Integration Testing..."
+			npm run test:integration
+                    '''
+                }
             }
         }
 

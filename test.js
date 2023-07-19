@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('./server.js');
+const {app, server} = require('./server.js');
 const mongoose = require('mongoose');
 const { expect } = require('chai');
 const Todo = require('./models/todo.js');
@@ -28,6 +28,8 @@ describe('Todo API', () => {
     await Todo.deleteMany({});
     // Disconnect from the test database
     await mongoose.connection.close();
+    // Close the server
+    server.close()
   });
 
   // Test GET /api/todos
@@ -41,7 +43,7 @@ describe('Todo API', () => {
 
           // Assertions
           expect(res.body.length).to.equal(2);
-          expect(res.body[0].text).equal('Todo 1');
+          expect(res.body[0].text).to.equal('Todo 1');
           expect(res.body[1].text).to.equal('Todo 2');
 
           done();
