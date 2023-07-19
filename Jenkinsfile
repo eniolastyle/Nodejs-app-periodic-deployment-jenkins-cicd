@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Installing Dependencies') {
             steps {
                 script {
                     sh '''
@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Integration Testing') {
             steps {
                 script {
                     def testResult = sh(
@@ -45,7 +45,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploying App') {
             steps {
                  echo 'Deploying App...'
             }
