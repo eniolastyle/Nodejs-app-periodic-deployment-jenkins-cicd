@@ -60,7 +60,7 @@ pipeline {
         success {
             echo 'Post-build: Sending Slack Notification - Build Succeeded'
             slackSend (
-                channel: '#devops-notification-test',
+                channel: 'C05HNRGGGJJ',
                 color: 'good',
                 message: "Build Succeeded: ${env.JOB_NAME} ${env.BUILD_NUMBER}",
                 tokenCredentialId: 'slack'
@@ -69,7 +69,7 @@ pipeline {
         failure {
             echo 'Post-build: Sending Slack Notification - Build Failed'
             slackSend (
-                channel: '#devops-notification-test',
+                channel: 'C05HNRGGGJJ',
                 color: 'danger',
                 message: "Build Failed: ${env.JOB_NAME} ${env.BUILD_NUMBER}",
                 tokenCredentialId: 'slack'
