@@ -30,9 +30,18 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Integration Testing') {
             steps {
-                echo "Test App..."
+                script {
+                    def testResult = sh(
+                        script: 'npm run test:integration',
+                        returnStatus: true
+                    )
+                    
+                    if (testResult != 0) {
+                        error('Integration test failed! Aborting deployment.')
+                    }
+                }
             }
         }
 
