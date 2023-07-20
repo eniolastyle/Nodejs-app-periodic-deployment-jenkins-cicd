@@ -52,4 +52,29 @@ pipeline {
         }
     }
 
+    post {
+        always {
+            echo 'Post-build: Cleanup'
+            // Add any post-build cleanup steps here, if needed
+        }
+        success {
+            echo 'Post-build: Sending Slack Notification - Build Succeeded'
+            slackSend (
+                channel: 'ufas-test',
+                color: 'good',
+                message: "Build Succeeded: ${env.JOB_NAME} ${env.BUILD_NUMBER}",
+                tokenCredentialId: 'slack'
+            )
+        }
+        failure {
+            echo 'Post-build: Sending Slack Notification - Build Failed'
+            slackSend (
+                channel: 'ufas-test',
+                color: 'danger',
+                message: "Build Failed: ${env.JOB_NAME} ${env.BUILD_NUMBER}",
+                tokenCredentialId: 'slack'
+            )
+        }
+    }
+
 }
