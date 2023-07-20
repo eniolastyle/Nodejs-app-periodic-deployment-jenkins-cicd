@@ -15,7 +15,7 @@ pipeline {
         
         stage("Checkout from SCM"){
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/eniolastyle/Nodejs-app-periodic-deployment-jenkins-cicd'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/ABSQUARE1/Nodejs-app-periodic-deployment-jenkins-cicd/'
             }
         }
 
