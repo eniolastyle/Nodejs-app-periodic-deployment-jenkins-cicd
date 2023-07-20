@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('./server.js');
+const { app, server } = require('./server.js');
 const mongoose = require('mongoose');
 const { expect } = require('chai');
 const Todo = require('./models/todo.js');
@@ -28,6 +28,7 @@ describe('Todo API', () => {
     await Todo.deleteMany({});
     // Disconnect from the test database
     await mongoose.connection.close();
+    server.close();
   });
 
   // Test GET /api/todos
