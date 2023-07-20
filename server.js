@@ -19,6 +19,7 @@ app.use('/api/todos', todosRouter);
 mongoose.connect(connectionStr, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  connectTimeoutMS: 30000,
 })
   .then(() => {
     console.log('Connected to MongoDB');
