@@ -15,7 +15,7 @@ pipeline {
         
         stage("Checkout from SCM"){
             steps {
-                git branch: 'ufas-test', credentialsId: 'github', url: 'https://github.com/eniolastyle/Nodejs-app-periodic-deployment-jenkins-cicd.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/eniolastyle/Nodejs-app-periodic-deployment-jenkins-cicd.git'
             }
         }
 
