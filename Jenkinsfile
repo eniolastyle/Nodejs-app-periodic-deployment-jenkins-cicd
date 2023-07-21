@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     triggers {
-        cron('H 0 * * *') // This schedules the job to run daily at midnight
+         cron('H/5 * * * *') // This schedules the job to run every 5 minutes
     }
 
     stages {
